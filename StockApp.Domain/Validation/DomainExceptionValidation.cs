@@ -1,20 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StockApp.Domain.Validation
 {
-    public class DomainExceptionValidation : Exception
+    public static class DomainExceptionValidation
     {
-        public DomainExceptionValidation(string error) : base(error)
-        {}
-
         public static void When(bool hasError, string error)
         {
-            if(hasError)
-                throw new DomainExceptionValidation(error);
+            if (hasError)
+                throw new DomainException(error);
+        }
+    }
+
+    public class DomainException : Exception
+    {
+        public DomainException(string error) : base(error)
+        {
         }
     }
 }
